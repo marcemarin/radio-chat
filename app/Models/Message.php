@@ -21,6 +21,7 @@ class Message extends Model
         'sent_at' => 'datetime',
         'moderation' => 'array',
         'classification' => 'array',
+        'raw' => 'array',
     ];
 
     public function program(): BelongsTo

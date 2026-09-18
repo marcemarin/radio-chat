@@ -31,7 +31,7 @@ class DownloadMediaJob implements ShouldQueue
         if ($this->message->provider === 'fake') {
             $wa = new \App\Wa\FakeProvider;
         }
-        $media = $wa->downloadMedia($this->message->wa_message_id);
+        $media = $wa->downloadMedia($this->message->wa_message_id, $this->message->raw ?? []);
         $path = sprintf('media/%s/%d.%s', $this->message->sent_at->format('Y/m'), $this->message->id, $media['ext']);
         Storage::disk('local')->put($path, $media['bytes']);
 

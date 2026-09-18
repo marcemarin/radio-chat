@@ -145,7 +145,8 @@ export default function Sala() {
                                 {h.message.type === 'audio' && <span className="text-xs px-1.5 rounded bg-white/10">audio {h.message.media_duration_s ?? ''}s</span>}
                             </div>
                             <div className="text-xl leading-snug">{h.message.transcript ?? h.message.body ?? '…'}</div>
-                            {h.message.media_url && <audio className="w-full mt-2" controls preload="none" src={h.message.media_url} />}
+                            {h.message.media_url && h.message.type === 'audio' && <audio className="w-full mt-2" controls preload="none" src={h.message.media_url} />}
+                            {h.message.media_url && h.message.type === 'image' && <img className="mt-2 max-h-64 rounded-lg" src={h.message.media_url} alt="" />}
                             <div className="flex gap-2 mt-3">
                                 {h.status !== 'on_air' && <Btn onClick={() => setHl(h, 'on_air')} accent>Al aire ahora</Btn>}
                                 <Btn onClick={() => setHl(h, 'done')}>Leído</Btn>
@@ -178,6 +179,9 @@ function Card({ m, flash, onHighlight }) {
                 {m.status === 'failed' && <span className="ml-2 text-xs text-red-400" title={m.error}>error</span>}
             </div>
             {m.media_url && m.type === 'audio' && <audio className="w-full mt-2" controls preload="none" src={m.media_url} />}
+            {m.media_url && m.type === 'image' && <a href={m.media_url} target="_blank" rel="noreferrer"><img className="mt-2 max-h-56 rounded-lg border border-white/10" src={m.media_url} alt="" loading="lazy" /></a>}
+            {m.media_url && m.type === 'video' && <video className="w-full mt-2 max-h-72 rounded-lg" controls preload="none" src={m.media_url} />}
+            {m.media_url && m.type === 'document' && <a className="inline-block mt-2 text-sm text-sky-300 underline" href={m.media_url} target="_blank" rel="noreferrer">Abrir documento</a>}
             <div className="flex items-center gap-2 mt-2.5 text-xs">
                 {intent && <span className={`px-2 py-0.5 rounded-full border ${intent.cls}`}>{intent.label}</span>}
                 {m.sentiment && <span className={`inline-block w-2 h-2 rounded-full ${SENT[m.sentiment]}`} title={m.sentiment} />}

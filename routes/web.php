@@ -1,10 +1,14 @@
 <?php
 
 use App\Http\Controllers\Api\SalaController;
+use App\Http\Controllers\WaController;
 use App\Http\Controllers\Webhooks\EvolutionWebhookController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'sala');
+
+Route::get('/wa', [WaController::class, 'page']);
+Route::get('/wa/qr.json', [WaController::class, 'qr']);
 
 Route::post('/webhooks/evolution', EvolutionWebhookController::class);
 

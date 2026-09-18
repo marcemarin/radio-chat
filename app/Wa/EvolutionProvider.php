@@ -83,10 +83,12 @@ class EvolutionProvider implements WaProvider
         return $res->ok() ? (string) ($res->json('instance.state') ?? 'unknown') : 'unknown';
     }
 
-    public function downloadMedia(string $waMessageId): array
+    public function downloadMedia(string $waMessageId, array $raw = []): array
     {
+        // Con key+message Evolution descarga directo del CDN de WhatsApp; con solo el id necesita tenerlo en su DB.
+        $message = isset($raw['message'], $raw['key']) ? ['key' => $raw['key'], 'message' => $raw['message']] : ['key' => ['id' => $waMessageId]];
         $res = $this->http()->post("/chat/getBase64FromMediaMessage/{$this->instance}", [
-            'message' => ['key' => ['id' => $waMessageId]],
+            'message' => $message,
             'convertToMp4' => false,
         ]);
         $res->throw();
@@ -166,7 +168,7 @@ class EvolutionProvider implements WaProvider
             mediaMime: $mime,
             mediaDurationS: $dur,
             sentAt: \Carbon\CarbonImmutable::createFromTimestamp($ts),
-            raw: ['messageType' => $data['messageType'] ?? null],
+            raw: ['messageType' => $data['messageType'] ?? null, 'key' => $key, 'message' => $m],
         );
     }
 }

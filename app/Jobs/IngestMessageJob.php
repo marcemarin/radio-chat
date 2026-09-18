@@ -53,6 +53,7 @@ class IngestMessageJob implements ShouldQueue, ShouldBeUnique
                 'media_duration_s' => $this->in->mediaDurationS,
                 'status' => Message::STATUS_RECEIVED,
                 'sent_at' => $this->in->sentAt,
+                'raw' => in_array($this->in->type, ['audio', 'image', 'video', 'document'], true) ? $this->in->raw : null,
             ]);
         });
 

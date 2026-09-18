@@ -18,7 +18,7 @@ class FakeProvider implements WaProvider
         return 'open';
     }
 
-    public function downloadMedia(string $waMessageId): array
+    public function downloadMedia(string $waMessageId, array $raw = []): array
     {
         $file = cache()->pull("fake-audio:{$waMessageId}");
         if (! $file || ! is_file($file)) {
