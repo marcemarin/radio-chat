@@ -92,6 +92,8 @@ class Message extends Model
             'on_air_score' => $this->on_air_score,
             'moderation' => $this->moderation ?? [],
             'summary' => $this->classification['summary'] ?? null,
+            'confidence' => $this->classification['raw']['confidence']['intent'] ?? null,
+            'review' => $this->classification['raw']['review'] ?? [],
             'highlight' => $this->highlight ? ['id' => $this->highlight->id, 'status' => $this->highlight->status] : null,
             'error' => $this->error,
             'sent_at' => $this->sent_at?->toIso8601String(),

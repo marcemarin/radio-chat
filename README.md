@@ -8,7 +8,7 @@ A live production room for radio and TV shows. Audiences send thousands of Whats
 
 - **Ingests** WhatsApp messages (text, voice notes, images, video, documents) through a provider adapter. Today: Evolution API (QR pairing). Planned: WhatsApp Cloud API.
 - **Transcribes** voice notes with a pluggable speech-to-text driver (AssemblyAI, Deepgram, OpenAI) and ships a benchmark command to compare them on your own audio.
-- **Classifies** every message with Claude using tool calling and a strict schema: intent (complaint, song request, greeting, opinion, contest, question, spam), sentiment, topic, location, listener name, moderation flags and an "on-air score".
+- **Classifies** every message in two tiers. Typed decisions — intent (complaint, song request, greeting, opinion, contest, question, spam), sentiment, an "on-air score" and moderation flags — come from a decision model (TypeSafe's Jev) that returns calibrated probabilities in about a second for a fraction of a cent per thousand messages. Anything that needs generated text — topic, location, listener name, a one-line summary — goes to Claude through tool calling with a strict schema, and only for messages worth the cost. Low-confidence decisions are surfaced to the producer as "review" instead of being decided silently.
 - **Streams** each pipeline step to the browser over websockets, so a voice note appears instantly and fills in as it is transcribed and classified.
 - **On-air board**: the producer queues messages; the host sees the current one teleprompter-style with a one-click audio player.
 
@@ -19,7 +19,7 @@ WhatsApp ── provider webhook ──▶ Laravel
                                    │  IngestMessageJob      (queue: ingest)   idempotent by provider message id
                                    │  DownloadMediaJob      (queue: media)    retries with backoff
                                    │  TranscribeMessageJob  (queue: stt)      driver: assemblyai | deepgram | openai | fake
-                                   │  ClassifyMessageJob    (queue: classify) driver: anthropic | fake
+                                   │  ClassifyMessageJob    (queue: classify) driver: jev (hybrid) | anthropic | fake
                                    ▼
                        PostgreSQL 17 + pgvector ── Reverb (websockets) ──▶ React board
 ```

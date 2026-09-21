@@ -55,6 +55,8 @@ return [
         'driver' => env('CLASSIFY_DRIVER', 'fake'),
         'anthropic_key' => env('ANTHROPIC_API_KEY'),
         'model' => env('CLASSIFY_MODEL', 'claude-haiku-4-5-20251001'),
+        'typesafe_key' => env('TYPESAFE_API_KEY'),
+        'typesafe_model' => env('TYPESAFE_MODEL', 'jev-latest'),
     ],
 
 ];

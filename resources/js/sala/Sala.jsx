@@ -203,6 +203,8 @@ function Row({ m, onHighlight }) {
                     {m.intent && <span className={m.intent === 'reclamo' ? 'text-ink-2' : ''}>{INTENT[m.intent]}</span>}
                     {m.topic_label && !(text || '').toLowerCase().startsWith(m.topic_label.toLowerCase().slice(0, 12)) && <span>{m.topic_label}</span>}
                     {flagged && <span className="text-air">{m.moderation.join(', ')}</span>}
+                    {m.review?.length > 0 && <span className="text-ink-2">revisar: {m.review.join(', ')}</span>}
+                    {m.confidence != null && m.confidence < 0.6 && <span title={`Confianza ${m.confidence}`}>poco seguro</span>}
                     {m.status === 'failed' && <span className="text-air" title={m.error}>error</span>}
                     {text && pending && <span>{STATUS_TEXT[m.status]}…</span>}
                 </div>
