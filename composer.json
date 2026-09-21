@@ -88,9 +88,5 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "repositories": {
-        "typesafe-laravel": {
-            "type": "vcs",
-            "url": "https://github.com/marcemarin/typesafe-laravel"
-        }
     }
 }

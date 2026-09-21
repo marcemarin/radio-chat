@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cbccb7d93843f58ca5745dbaf04133fb",
+    "content-hash": "412e8736c923ab4633b75fe89a4394ac",
     "packages": [
         {
             "name": "brick/math",
@@ -2462,12 +2462,12 @@
             "type": "library",
             "extra": {
                 "laravel": {
-                    "providers": [
-                        "Marcemarin\\TypeSafe\\TypeSafeServiceProvider"
-                    ],
                     "aliases": {
                         "TypeSafe": "Marcemarin\\TypeSafe\\Facades\\TypeSafe"
-                    }
+                    },
+                    "providers": [
+                        "Marcemarin\\TypeSafe\\TypeSafeServiceProvider"
+                    ]
                 }
             },
             "autoload": {
@@ -2475,27 +2475,7 @@
                     "Marcemarin\\TypeSafe\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Marcemarin\\TypeSafe\\Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "vendor/bin/pest"
-                ],
-                "analyse": [
-                    "vendor/bin/phpstan analyse --memory-limit=1G"
-                ],
-                "format": [
-                    "vendor/bin/pint"
-                ],
-                "check": [
-                    "@test",
-                    "@analyse",
-                    "vendor/bin/pint --test"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2520,8 +2500,8 @@
                 "typesafe-ai"
             ],
             "support": {
-                "source": "https://github.com/marcemarin/typesafe-laravel/tree/v0.1.0",
-                "issues": "https://github.com/marcemarin/typesafe-laravel/issues"
+                "issues": "https://github.com/marcemarin/typesafe-laravel/issues",
+                "source": "https://github.com/marcemarin/typesafe-laravel/tree/v0.1.0"
             },
             "time": "2026-09-21T17:06:59+00:00"
         },
