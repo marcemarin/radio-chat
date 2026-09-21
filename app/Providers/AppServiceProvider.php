@@ -27,8 +27,8 @@ class AppServiceProvider extends ServiceProvider
 
             return match (true) {
                 // Decisiones con Jev; extracción de tema/lugar/nombre con el LLM si hay key, si no con el heurístico.
-                $c['driver'] === 'jev' && $c['typesafe_key'] => new JevClassifier(
-                    (string) $c['typesafe_key'], (string) $c['typesafe_model'], $llm ?? new FakeClassifier, $llm !== null,
+                $c['driver'] === 'jev' && config('typesafe.api_key') => new JevClassifier(
+                    app(\Marcemarin\TypeSafe\Contracts\Client::class), $llm ?? new FakeClassifier, $llm !== null,
                 ),
                 $c['driver'] === 'anthropic' && $llm => $llm,
                 default => new FakeClassifier,
