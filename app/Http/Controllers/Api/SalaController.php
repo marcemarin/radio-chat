@@ -52,6 +52,7 @@ class SalaController extends Controller
 
         return response()->json(['highlights' => $items->map(fn ($h) => [
             'id' => $h->id, 'status' => $h->status, 'position' => $h->position, 'note' => $h->note,
+            'on_air_since' => $h->status === 'on_air' ? $h->updated_at?->toIso8601String() : null,
             'message' => $h->message->toSala(),
         ])->values()]);
     }
@@ -79,6 +80,22 @@ class SalaController extends Controller
         broadcast(new \App\Events\MessageUpdated($highlight->message()->with('contact')->first()));
 
         return response()->json(['highlight' => $highlight]);
+    }
+
+    /** Marca el que está al aire como salido y pone al aire el primero de la cola, en una sola operación. */
+    public function next(Program $program): JsonResponse
+    {
+        \DB::transaction(function () use ($program) {
+            $program->highlights()->where('status', 'on_air')->update(['status' => 'done']);
+            $nextUp = $program->highlights()->where('status', 'pending')->orderBy('position')->orderBy('id')->first();
+            $nextUp?->update(['status' => 'on_air']);
+        });
+        $touched = $program->highlights()->whereIn('status', ['on_air', 'done'])->latest('updated_at')->limit(2)->with('message.contact')->get();
+        foreach ($touched as $h) {
+            broadcast(new \App\Events\MessageUpdated($h->message));
+        }
+
+        return $this->highlights($program);
     }
 
     public function media(Message $message): StreamedResponse

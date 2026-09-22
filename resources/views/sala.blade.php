@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="es" class="dark">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name') }} · Sala</title>
+    <title>{{ config('app.name') }} · {{ request()->is('aire') ? 'Aire' : 'Redacción' }}</title>
     <script>
         window.RADIO = {
             reverb: {
@@ -15,7 +15,7 @@
         };
     </script>
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=bricolage-grotesque:400,500,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.bunny.net/css?family=newsreader:400,500,600|schibsted-grotesk:400,500,600,700|instrument-serif:400&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.jsx'])
 </head>
 <body class="antialiased">

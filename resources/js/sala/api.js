@@ -9,6 +9,7 @@ export const api = {
     messages: (programId, params = {}) => json(`/api/programs/${programId}/messages?` + new URLSearchParams(params)),
     highlights: (programId) => json(`/api/programs/${programId}/highlights`),
     highlight: (messageId) => json(`/api/messages/${messageId}/highlight`, { method: 'POST' }),
+    next: (programId) => json(`/api/programs/${programId}/highlights/next`, { method: 'POST' }),
     updateHighlight: (id, data) => json(`/api/highlights/${id}`, { method: 'PATCH', body: JSON.stringify(data) }),
     feedback: (messageId, bad) => json(`/api/messages/${messageId}/feedback`, { method: 'POST', body: JSON.stringify({ bad_transcript: bad }) }),
 };

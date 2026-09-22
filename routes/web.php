@@ -6,6 +6,7 @@ use App\Http\Controllers\Webhooks\EvolutionWebhookController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'sala');
+Route::view('/aire', 'sala');
 
 Route::get('/wa', [WaController::class, 'page']);
 Route::get('/wa/qr.json', [WaController::class, 'qr']);
@@ -20,6 +21,7 @@ Route::prefix('api')->group(function () {
     Route::post('/messages/{message}/highlight', [SalaController::class, 'highlight']);
     Route::post('/messages/{message}/feedback', [SalaController::class, 'feedback']);
     Route::patch('/highlights/{highlight}', [SalaController::class, 'updateHighlight']);
+    Route::post('/programs/{program}/highlights/next', [SalaController::class, 'next']);
 });
 
 Route::get('/media/{message}', [SalaController::class, 'media'])->name('media');

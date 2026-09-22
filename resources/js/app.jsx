@@ -1,5 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import Sala from './sala/Sala.jsx';
+import Redaccion from './sala/Redaccion.jsx';
+import Aire from './sala/Aire.jsx';
 
-createRoot(document.getElementById('app')).render(<Sala />);
+const Screen = window.location.pathname.startsWith('/aire') ? Aire : Redaccion;
+createRoot(document.getElementById('app')).render(<Screen />);

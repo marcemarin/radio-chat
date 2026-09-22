@@ -1,24 +1,47 @@
 @import 'tailwindcss';
 
 @theme {
-    --font-sans: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
-    --color-ink: #f3efe6;
-    --color-ink-2: #c9c3b6;
-    --color-mute: #93a0af;
-    --color-base: #151b23;
-    --color-surface: #1d2530;
-    --color-line: #2b3541;
-    --color-air: #e5362b;
+    --font-sans: 'Schibsted Grotesk', 'Helvetica Neue', system-ui, sans-serif;
+    --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+    --font-display: 'Instrument Serif', Georgia, serif;
 }
 
-html, body { height: 100%; }
-body { background: var(--color-base); color: var(--color-ink); font-feature-settings: 'ss01', 'cv11'; }
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-thumb { background: #2b3541; border-radius: 4px; }
-button:focus-visible, a:focus-visible { outline: 2px solid #f3efe6; outline-offset: 2px; }
+@theme inline {
+    /* Tokens de color: los valores reales los fija cada tema (.theme-paper / .theme-night). */
+    --color-paper: var(--paper);
+    --color-ink: var(--ink);
+    --color-ink2: var(--ink2);
+    --color-mute: var(--mute);
+    --color-line: var(--line);
+    --color-line2: var(--line2);
+    --color-air: var(--air);
+    --color-good: var(--good);
+    --color-warn: var(--warn);
+    --color-night: var(--night);
+    --color-panel: var(--panel);
+    --color-panel2: var(--panel2);
+}
 
+/* Redacción: papel cálido, tinta, un solo rojo de sello. Para producción. */
+.theme-paper {
+    --paper: #f4f1ea; --ink: #1c1a16; --ink2: #3d3831; --mute: #6b655a; --line: #d9d3c6; --line2: #e4dfd4;
+    --air: #b3261e; --good: #1f8a4c; --warn: #9a6412; --night: #1c1a16; --panel: #ffffff; --panel2: #faf8f3;
+}
+/* Pantalla de aire: noche de estudio, texto papel, lámpara roja. Para el conductor. */
+.theme-night {
+    --paper: #f2f0ea; --ink: #f2f0ea; --ink2: #d6d2c8; --mute: #8f97a1; --line: #262c33; --line2: #3a424b;
+    --air: #ff2d20; --good: #4ade80; --warn: #e0b060; --night: #101418; --panel: #151a20; --panel2: #1b2128;
+}
+.theme-night .font-serif { font-family: var(--font-display); }
+
+html, body { height: 100%; }
+body { margin: 0; background: #1c1a16; }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb { background: var(--line2, #ccc); border-radius: 4px; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--air); outline-offset: 2px; }
+.text-balance { text-wrap: balance; }
 .clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 
-@keyframes lamp { 0%, 100% { box-shadow: 0 0 0 0 rgba(229, 54, 43, .55), 0 0 18px 2px rgba(229, 54, 43, .35); } 50% { box-shadow: 0 0 0 6px rgba(229, 54, 43, 0), 0 0 26px 4px rgba(229, 54, 43, .55); } }
+@keyframes lamp { 0%, 100% { box-shadow: 0 0 0 0 rgba(255,45,32,.55), 0 0 22px 4px rgba(255,45,32,.4); } 50% { box-shadow: 0 0 0 6px rgba(255,45,32,0), 0 0 30px 6px rgba(255,45,32,.6); } }
 .lamp { animation: lamp 2.2s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) { .lamp { animation: none; } }
