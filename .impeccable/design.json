@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-22T00:00:00Z",
+  "title": "Design System: Radio Chat",
+  "extensions": {
+    "colorMeta": {
+      "panel": { "role": "neutral", "displayName": "Panel", "canonical": "#1f2226", "tonalRamp": ["#0b0d0f", "#15181b", "#1f2226", "#2b3036", "#3a4047", "#5a616a", "#9aa3ad", "#e9e6df"] },
+      "panel-deep": { "role": "neutral", "displayName": "Panel Deep", "canonical": "#181b1f", "tonalRamp": ["#0a0c0e", "#111417", "#181b1f", "#1f2226", "#2c3137", "#4a5159", "#8c959f", "#dfe2e6"] },
+      "key-face": { "role": "neutral", "displayName": "Key Face", "canonical": "#2b3036", "tonalRamp": ["#111417", "#1a1d21", "#2b3036", "#333940", "#454c54", "#6a727b", "#a5adb6", "#e6e8eb"] },
+      "edge": { "role": "neutral", "displayName": "Edge", "canonical": "#30353b", "tonalRamp": ["#121517", "#1f2226", "#30353b", "#3a4047", "#4d545b", "#737b84", "#a9b0b8", "#e7e9ec"] },
+      "strip": { "role": "neutral", "displayName": "Scribble Strip", "canonical": "#15181b", "tonalRamp": ["#08090b", "#0f1113", "#15181b", "#1f2226", "#2c3137", "#4a5159", "#8c959f", "#dfe2e6"] },
+      "lamp-off": { "role": "neutral", "displayName": "Lamp Well", "canonical": "#111417", "tonalRamp": ["#050607", "#0a0c0e", "#111417", "#1a1d21", "#2b3036", "#4a5159", "#8c959f", "#dfe2e6"] },
+      "text": { "role": "neutral", "displayName": "Paper", "canonical": "#e9e6df", "tonalRamp": ["#26241f", "#4a463f", "#6f6a61", "#948e83", "#b8b3aa", "#d6d2c8", "#e9e6df", "#f7f5f0"] },
+      "text-engraved": { "role": "neutral", "displayName": "Engraved", "canonical": "#c4c9cf", "tonalRamp": ["#1f2226", "#3a4047", "#5a616a", "#7d858f", "#9aa3ad", "#c4c9cf", "#dfe2e6", "#f3f4f6"] },
+      "text-mute": { "role": "neutral", "displayName": "Mute", "canonical": "#9aa3ad", "tonalRamp": ["#1a1d21", "#2c3137", "#4a5159", "#6a727b", "#9aa3ad", "#b7bec6", "#d3d8de", "#eef0f2"] },
+      "tally-green": { "role": "tertiary", "displayName": "Tally Green", "canonical": "#35d07f", "tonalRamp": ["#082b18", "#0f4c2b", "#186f40", "#249a5a", "#35d07f", "#6fe0a4", "#a8edc7", "#e0f9ea"] },
+      "tally-amber": { "role": "secondary", "displayName": "Tally Amber", "canonical": "#f2b632", "tonalRamp": ["#3a2a06", "#5c4a1a", "#8a6a1e", "#c48f22", "#f2b632", "#ffc648", "#ffd98a", "#fff1cf"] },
+      "tally-red": { "role": "primary", "displayName": "Tally Red", "canonical": "#ff3b30", "tonalRamp": ["#3d0b08", "#5a2b27", "#8f221b", "#d9332a", "#ff3b30", "#ff6a60", "#ff8a80", "#ffd7d3"] },
+      "key-red": { "role": "primary", "displayName": "Key Red", "canonical": "#d9332a", "tonalRamp": ["#3d0b08", "#5a1511", "#8f221b", "#b52a22", "#d9332a", "#e63b31", "#f07a73", "#fbd6d3"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display (night)", "purpose": "On-air transcript on /aire only; Instrument Serif. Never on the panel." },
+      "headline": { "displayName": "Headline", "purpose": "On-air transcript in the host column; 17px under 768px." },
+      "title": { "displayName": "Title", "purpose": "Empty-state lead line." },
+      "body": { "displayName": "Body", "purpose": "Message transcript in its row; clamped to 3 lines until expanded." },
+      "body-compact": { "displayName": "Body compact", "purpose": "Queue item transcripts and empty-state prose." },
+      "control": { "displayName": "Control", "purpose": "Text on action keys; secondary keys use weight 500, channel keys 13px/500." },
+      "meta": { "displayName": "Meta", "purpose": "Timestamps, counts, header LED digits." },
+      "strip-name": { "displayName": "Strip name", "purpose": "Listener name and place engraved on the scribble strip." },
+      "label": { "displayName": "Label", "purpose": "Engraved classification labels and the state caption under the state key; uppercase." },
+      "section-caps": { "displayName": "Section caps", "purpose": "Section titles 'Al aire', 'Al conductor'; uppercase, 0.14em." }
+    },
+    "shadows": [
+      { "name": "key-rest", "value": "inset 0 1px 0 rgba(255,255,255,.07), 0 2px 3px rgba(0,0,0,.45), 0 6px 14px -6px rgba(0,0,0,.55)", "purpose": "Every key at rest: top highlight plus offset blurred drop." },
+      { "name": "key-hover", "value": "inset 0 1px 0 rgba(255,255,255,.1), 0 3px 5px rgba(0,0,0,.45), 0 8px 18px -6px rgba(0,0,0,.55)", "purpose": "Key lifts on hover." },
+      { "name": "key-pressed", "value": "inset 0 1px 0 rgba(0,0,0,.4), 0 1px 1px rgba(0,0,0,.4)", "purpose": "Key sinks 1px on :active / .key-pressed." },
+      { "name": "key-disabled", "value": "inset 0 1px 0 rgba(255,255,255,.03)", "purpose": "Disabled key reads flush with the panel." },
+      { "name": "key-lit", "value": "inset 0 1px 0 rgba(255,255,255,.6), 0 0 0 1px rgba(233,230,223,.15), 0 0 18px -2px rgba(233,230,223,.45)", "purpose": "Active channel key: paper face with soft glow." },
+      { "name": "key-amber", "value": "inset 0 1px 0 rgba(255,255,255,.45), 0 2px 3px rgba(0,0,0,.4), 0 0 16px -2px rgba(242,182,50,.55)", "purpose": "Queued key face." },
+      { "name": "key-red", "value": "inset 0 1px 0 rgba(255,255,255,.35), 0 2px 3px rgba(0,0,0,.4), 0 0 18px -2px rgba(255,59,48,.6)", "purpose": "On-air key face." },
+      { "name": "strip", "value": "inset 0 1px 0 rgba(0,0,0,.6), 0 1px 0 rgba(255,255,255,.07)", "purpose": "Recessed scribble strip." },
+      { "name": "lamp-off", "value": "inset 0 1px 2px rgba(0,0,0,.9), 0 1px 0 rgba(255,255,255,.07)", "purpose": "Unlit lamp well." },
+      { "name": "lamp-green", "value": "0 0 8px 1px rgba(53,208,127,.6), inset 0 -1px 2px rgba(0,0,0,.3)", "purpose": "Ready lamp." },
+      { "name": "lamp-amber", "value": "0 0 8px 1px rgba(242,182,50,.6), inset 0 -1px 2px rgba(0,0,0,.3)", "purpose": "Queued lamp." },
+      { "name": "lamp-red", "value": "0 0 8px 1px rgba(255,59,48,.65), inset 0 -1px 2px rgba(0,0,0,.3)", "purpose": "On-air lamp." },
+      { "name": "lamp-glow", "value": "0 0 14px 3px rgba(255,59,48,.65), 0 0 36px 8px rgba(255,59,48,.25), inset 0 -1px 2px rgba(0,0,0,.3)", "purpose": "Large on-air lamp halo in the host column." },
+      { "name": "key-fill-edge", "value": "inset 0 1px 0 rgba(53,208,127,.75)", "purpose": "Top edge of the on-air score fill inside the state key." },
+      { "name": "engraved-text", "value": "text-shadow: 0 1px 0 rgba(0,0,0,.6)", "purpose": "Labels and strip text; .7 alpha on strips." },
+      { "name": "led-glow", "value": "text-shadow: 0 0 6px rgba(53,208,127,.45)", "purpose": "LED digit counters." }
+    ],
+    "motion": [
+      { "name": "ease-key", "value": "cubic-bezier(.2,.8,.2,1)", "purpose": "Every panel transition and animation." },
+      { "name": "key-transform", "value": "150ms", "purpose": "Key press translateY and background." },
+      { "name": "key-shadow", "value": "180ms", "purpose": "Key shadow lift on hover." },
+      { "name": "bloom", "value": "220ms, 1 iteration", "purpose": "'A la cola' press: amber face flash, 10px amber ring expanding and fading." },
+      { "name": "key-fill", "value": "400ms", "purpose": "Score fill scaleY transition inside the state key." },
+      { "name": "blink", "value": "700ms steps(1, end) x2", "purpose": "Row lamp blinks twice when a message arrives (row younger than 20s, class held 2s)." },
+      { "name": "lamp-breathe (night)", "value": "2.2s ease-in-out infinite", "purpose": "Night theme on-air lamp only; not part of the panel." },
+      { "name": "reduced-motion", "value": "transition: none; animation: none", "purpose": "prefers-reduced-motion removes key transitions, fill, bloom, blink and night lamp." }
+    ],
+    "breakpoints": [
+      { "name": "md", "value": "768px" }
+    ],
+    "themes": [
+      { "name": "theme-panel", "route": "/", "status": "house style (producer board)" },
+      { "name": "theme-night", "route": "/aire", "status": "sibling screen (host); own values under the same variable names; 8px rounded-lg controls; Instrument Serif display" },
+      { "name": "theme-paper", "route": null, "status": "legacy, unused by any route" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Key",
+      "kind": "button",
+      "refersTo": "key",
+      "description": "The panel's only button: raised charcoal cap that sinks 1px when pressed. Primary action 'A la cola'.",
+      "html": "<button class=\"ds-key\">A la cola</button>",
+      "css": ".ds-key { font-family: 'Schibsted Grotesk', 'Helvetica Neue', system-ui, sans-serif; font-size: 14px; font-weight: 600; white-space: nowrap; height: 44px; padding: 0 16px; background: #2b3036; color: #e9e6df; border: 1px solid #1a1d21; border-radius: 6px; box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 2px 3px rgba(0,0,0,.45), 0 6px 14px -6px rgba(0,0,0,.55); transition: transform 150ms cubic-bezier(.2,.8,.2,1), box-shadow 180ms cubic-bezier(.2,.8,.2,1), background 150ms; cursor: pointer; } .ds-key:hover { background: #333940; box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 3px 5px rgba(0,0,0,.45), 0 8px 18px -6px rgba(0,0,0,.55); } .ds-key:active { transform: translateY(1px); box-shadow: inset 0 1px 0 rgba(0,0,0,.4), 0 1px 1px rgba(0,0,0,.4); } .ds-key:disabled { cursor: not-allowed; color: #9aa3ad; box-shadow: inset 0 1px 0 rgba(255,255,255,.03); } .ds-key:focus-visible { outline: 2px solid #f2b632; outline-offset: 2px; }"
+    },
+    {
+      "name": "Key Red (on-air control)",
+      "kind": "button",
+      "refersTo": "key-red",
+      "description": "The single on-air control per screen: 'Ya salió, siguiente'. Key red #d9332a, not the lamp red.",
+      "html": "<button class=\"ds-key-red\">Ya salió, siguiente</button>",
+      "css": ".ds-key-red { font-family: 'Schibsted Grotesk', 'Helvetica Neue', system-ui, sans-serif; font-size: 14px; font-weight: 600; white-space: nowrap; height: 44px; padding: 0 16px; background: #d9332a; color: #fff; border: 1px solid #8f221b; border-radius: 6px; box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 2px 3px rgba(0,0,0,.4), 0 0 18px -2px rgba(255,59,48,.6); transition: transform 150ms cubic-bezier(.2,.8,.2,1), box-shadow 180ms cubic-bezier(.2,.8,.2,1), background 150ms; cursor: pointer; } .ds-key-red:hover { background: #e63b31; } .ds-key-red:active { transform: translateY(1px); box-shadow: inset 0 1px 0 rgba(0,0,0,.4), 0 1px 1px rgba(0,0,0,.4); } .ds-key-red:focus-visible { outline: 2px solid #f2b632; outline-offset: 2px; }"
+    },
+    {
+      "name": "Key Amber (queue position)",
+      "kind": "button",
+      "refersTo": "key-amber",
+      "description": "Numbered 44px queue key; pressing it puts that item on air.",
+      "html": "<button class=\"ds-key-amber\" aria-label=\"Poner al aire\">1</button>",
+      "css": ".ds-key-amber { font-family: 'Schibsted Grotesk', 'Helvetica Neue', system-ui, sans-serif; font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; width: 44px; height: 44px; display: grid; place-items: center; background: #f2b632; color: #1f1a0a; border: 1px solid #8a6a1e; border-radius: 6px; box-shadow: inset 0 1px 0 rgba(255,255,255,.45), 0 2px 3px rgba(0,0,0,.4), 0 0 16px -2px rgba(242,182,50,.55); transition: transform 150ms cubic-bezier(.2,.8,.2,1), box-shadow 180ms cubic-bezier(.2,.8,.2,1), background 150ms; cursor: pointer; } .ds-key-amber:hover { background: #ffc648; } .ds-key-amber:active { transform: translateY(1px); box-shadow: inset 0 1px 0 rgba(0,0,0,.4), 0 1px 1px rgba(0,0,0,.4); } .ds-key-amber:focus-visible { outline: 2px solid #f2b632; outline-offset: 2px; }"
+    },
+    {
+      "name": "Channel Key (lit)",
+      "kind": "nav",
+      "refersTo": "key-lit",
+      "description": "Header channel filter with LED count; the active channel is lit paper with charcoal digits.",
+      "html": "<nav class=\"ds-channels\" aria-label=\"Canales\"><button class=\"ds-key-ch ds-key-ch--lit\" aria-pressed=\"true\"><span>Todo</span><span class=\"ds-led\">30</span></button><button class=\"ds-key-ch\"><span>Audios</span><span class=\"ds-led\">15</span></button><button class=\"ds-key-ch\"><span>Reclamos</span><span class=\"ds-led\">7</span></button></nav>",
+      "css": ".ds-channels { display: flex; gap: 6px; background: #181b1f; padding: 10px 20px; } .ds-key-ch { font-family: 'Schibsted Grotesk', 'Helvetica Neue', system-ui, sans-serif; font-size: 13px; font-weight: 500; letter-spacing: .02em; display: flex; align-items: center; gap: 8px; height: 36px; padding: 0 12px; background: #2b3036; color: #e9e6df; border: 1px solid #1a1d21; border-radius: 6px; box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 2px 3px rgba(0,0,0,.45), 0 6px 14px -6px rgba(0,0,0,.55); transition: transform 150ms cubic-bezier(.2,.8,.2,1), box-shadow 180ms cubic-bezier(.2,.8,.2,1), background 150ms; cursor: pointer; } .ds-key-ch:hover { background: #333940; } .ds-key-ch:active { transform: translateY(1px); box-shadow: inset 0 1px 0 rgba(0,0,0,.4), 0 1px 1px rgba(0,0,0,.4); } .ds-key-ch:focus-visible { outline: 2px solid #f2b632; outline-offset: 2px; } .ds-led { color: #35d07f; text-shadow: 0 0 6px rgba(53,208,127,.45); font-variant-numeric: tabular-nums; } .ds-key-ch--lit { background: #e9e6df; color: #1f2226; box-shadow: inset 0 1px 0 rgba(255,255,255,.6), 0 0 0 1px rgba(233,230,223,.15), 0 0 18px -2px rgba(233,230,223,.45); } .ds-key-ch--lit .ds-led { color: #1f2226; text-shadow: none; }"
+    },
+    {
+      "name": "Key State (with score fill)",
+      "kind": "custom",
+      "refersTo": "key-state",
+      "description": "56px non-interactive key: green fill rises from the base to the on-air score; a 12px lamp shows the state; 11px caption below.",
+      "html": "<div class=\"ds-state\"><div class=\"ds-key-state\" title=\"Puntaje para el aire 72/100\"><span class=\"ds-key-fill\" style=\"transform: scaleY(.72)\"></span><span class=\"ds-lamp ds-lamp--green\"></span></div><span class=\"ds-state-cap\">listo</span></div>",
+      "css": ".ds-state { display: inline-flex; flex-direction: column; align-items: center; gap: 6px; background: #1f2226; padding: 14px 20px; } .ds-key-state { position: relative; width: 56px; height: 56px; overflow: hidden; display: grid; place-items: center; background: #2b3036; border: 1px solid #1a1d21; border-radius: 6px; box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 2px 3px rgba(0,0,0,.45), 0 6px 14px -6px rgba(0,0,0,.55); cursor: default; } .ds-key-fill { position: absolute; left: 0; right: 0; bottom: 0; height: 100%; transform-origin: bottom; background: rgba(53,208,127,.28); box-shadow: inset 0 1px 0 rgba(53,208,127,.75); transition: transform 400ms cubic-bezier(.2,.8,.2,1); } .ds-lamp { position: relative; display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #111417; border: 1px solid #0a0c0e; box-shadow: inset 0 1px 2px rgba(0,0,0,.9), 0 1px 0 rgba(255,255,255,.07); } .ds-lamp--green { background: #35d07f; box-shadow: 0 0 8px 1px rgba(53,208,127,.6), inset 0 -1px 2px rgba(0,0,0,.3); } .ds-state-cap { font-family: 'Schibsted Grotesk', 'Helvetica Neue', system-ui, sans-serif; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: #9aa3ad; line-height: 1.25; min-height: 1.2em; }"
+    },
+    {
+      "name": "Tally Lamps",
+      "kind": "custom",
+      "refersTo": "lamp",
+      "description": "10px lamp wells: unlit, green ready, amber queued, red on air, and the 14px glowing on-air lamp.",
+      "html": "<div class=\"ds-lamps\"><span class=\"ds-lamp\"></span><span class=\"ds-lamp ds-lamp--green\"></span><span class=\"ds-lamp ds-lamp--amber\"></span><span class=\"ds-lamp ds-lamp--red\"></span><span class=\"ds-lamp ds-lamp--lg ds-lamp--red ds-lamp--glow\"></span><span class=\"ds-lamp-cap\">Al aire</span></div>",
+      "css": ".ds-lamps { display: inline-flex; align-items: center; gap: 14px; background: #181b1f; padding: 16px 20px; } .ds-lamp { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #111417; border: 1px solid #0a0c0e; box-shadow: inset 0 1px 2px rgba(0,0,0,.9), 0 1px 0 rgba(255,255,255,.07); } .ds-lamp--lg { width: 14px; height: 14px; } .ds-lamp--green { background: #35d07f; box-shadow: 0 0 8px 1px rgba(53,208,127,.6), inset 0 -1px 2px rgba(0,0,0,.3); } .ds-lamp--amber { background: #f2b632; box-shadow: 0 0 8px 1px rgba(242,182,50,.6), inset 0 -1px 2px rgba(0,0,0,.3); } .ds-lamp--red { background: #ff3b30; box-shadow: 0 0 8px 1px rgba(255,59,48,.65), inset 0 -1px 2px rgba(0,0,0,.3); } .ds-lamp--glow { box-shadow: 0 0 14px 3px rgba(255,59,48,.65), 0 0 36px 8px rgba(255,59,48,.25), inset 0 -1px 2px rgba(0,0,0,.3); } .ds-lamp-cap { font-family: 'Schibsted Grotesk', 'Helvetica Neue', system-ui, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #e9e6df; }"
+    },
+    {
+      "name": "Scribble Strip",
+      "kind": "card",
+      "refersTo": "strip",
+      "description": "Recessed name plate for the program (header) or the listener (row).",
+      "html": "<div class=\"ds-strips\"><div class=\"ds-strip ds-strip--program\"><div class=\"ds-strip-name\">Demo FM Street</div><div class=\"ds-strip-station\">FM Street 101.5 Posadas</div></div><span class=\"ds-strip ds-strip--who\">Ana, Villa Cabello</span></div>",
+      "css": ".ds-strips { display: inline-flex; align-items: center; gap: 16px; background: #1f2226; padding: 14px 20px; font-family: 'Schibsted Grotesk', 'Helvetica Neue', system-ui, sans-serif; } .ds-strip { background: #15181b; border-radius: 4px; box-shadow: inset 0 1px 0 rgba(0,0,0,.6), 0 1px 0 rgba(255,255,255,.07); color: #c4c9cf; text-shadow: 0 1px 0 rgba(0,0,0,.7); } .ds-strip--program { padding: 6px 12px; min-width: 200px; } .ds-strip-name { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .ds-strip-station { font-size: 11px; letter-spacing: .04em; color: #9aa3ad; } .ds-strip--who { display: inline-block; padding: 4px 10px; font-size: 12px; letter-spacing: .04em; min-width: 6rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }"
+    },
+    {
+      "name": "Engraved Label",
+      "kind": "chip",
+      "refersTo": "label",
+      "description": "Classification label: 11px tracked caps, 1px filet, no fill. Red for moderation, amber for 'revisar'.",
+      "html": "<div class=\"ds-labels\"><span class=\"ds-label\">Reclamo</span><span class=\"ds-label\">Corte de luz</span><span class=\"ds-label ds-label--amber\">revisar: insulto</span><span class=\"ds-label ds-label--red\">datos personales</span></div>",
+      "css": ".ds-labels { display: inline-flex; align-items: center; gap: 12px; flex-wrap: wrap; background: #1f2226; padding: 14px 20px; } .ds-label { font-family: 'Schibsted Grotesk', 'Helvetica Neue', system-ui, sans-serif; white-space: nowrap; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: #9aa3ad; padding: 2px 7px; border: 1px solid #30353b; border-radius: 3px; text-shadow: 0 1px 0 rgba(0,0,0,.6); } .ds-label--red { color: #ff8a80; border-color: #5a2b27; } .ds-label--amber { color: #f2b632; border-color: #5c4a1a; }"
+    },
+    {
+      "name": "Player",
+      "kind": "custom",
+      "refersTo": "player-paper",
+      "description": "Round play disc with tabular duration. Paper tone (32px) in rows; air tone (44px, red) for the on-air message.",
+      "html": "<div class=\"ds-players\"><div class=\"ds-player\"><button class=\"ds-play ds-play--paper\" aria-label=\"Reproducir\" style=\"width:32px;height:32px\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 14 14\" fill=\"currentColor\"><path d=\"M3 1.5v11l9-5.5z\"/></svg></button><span class=\"ds-play-time\">0:12</span></div><div class=\"ds-player\"><button class=\"ds-play ds-play--air\" aria-label=\"Pausar\" style=\"width:44px;height:44px\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"currentColor\"><rect x=\"2\" y=\"1\" width=\"3.5\" height=\"12\"/><rect x=\"8.5\" y=\"1\" width=\"3.5\" height=\"12\"/></svg></button><span class=\"ds-play-time\">0:04 / 0:12</span></div></div>",
+      "css": ".ds-players { display: inline-flex; align-items: center; gap: 28px; background: #1f2226; padding: 14px 20px; } .ds-player { display: flex; align-items: center; gap: 12px; } .ds-play { flex-shrink: 0; border: 0; border-radius: 9999px; display: grid; place-items: center; cursor: pointer; } .ds-play:hover { filter: brightness(1.1); } .ds-play:focus-visible { outline: 2px solid #f2b632; outline-offset: 2px; } .ds-play--paper { background: #e9e6df; color: #1f2226; } .ds-play--air { background: #ff3b30; color: #fff; } .ds-play-time { font-family: 'Schibsted Grotesk', 'Helvetica Neue', system-ui, sans-serif; font-size: 14px; color: #9aa3ad; font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "Text Link (tertiary action)",
+      "kind": "button",
+      "refersTo": "key",
+      "description": "Lowest action tier: plain mute text that turns paper on hover ('Ver completo', 'Mal transcripto', 'Sacar').",
+      "html": "<div class=\"ds-links\"><button class=\"ds-link\">Ver completo</button><button class=\"ds-link ds-link--xs\">Mal transcripto</button></div>",
+      "css": ".ds-links { display: inline-flex; align-items: center; gap: 16px; background: #1f2226; padding: 14px 20px; } .ds-link { font-family: 'Schibsted Grotesk', 'Helvetica Neue', system-ui, sans-serif; font-size: 12px; color: #9aa3ad; background: none; border: 0; padding: 0; cursor: pointer; white-space: nowrap; } .ds-link--xs { font-size: 11px; } .ds-link:hover { color: #e9e6df; } .ds-link:focus-visible { outline: 2px solid #f2b632; outline-offset: 2px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Intercom Keypanel",
+    "overview": "The producer's board is a studio intercom panel: a matte charcoal slab with rows of backlit keys, tally lamps and engraved scribble strips. Every listener message is a key you press to send it to the host; every state is a lamp. The panel is not a dashboard of cards and not an editorial page; it is hardware, read at arm's length in bursts while the show is on air. The world is recognizable with the content stripped out: rows of keys and lamps on a panel.\n\nColor is rationed like on real broadcast gear. All text is achromatic (warm paper on charcoal, engraved grey for names, cool grey for meta); the only saturated color lives in lamps, lit key faces and 1px filets. Green means ready, amber means queued, red means on air, unlit means new, and a dimmed row means spam. Motion is limited to state changes (150 to 400 ms) and never to page choreography.\n\nTwo sibling themes share the same token names in resources/css/app.css: .theme-panel (this world, the producer board at /), .theme-night (the host screen at /aire, a darker studio-night look with a breathing red lamp and a serif display size), and .theme-paper (a legacy warm-paper theme, currently unused by any route). The panel is the house style; night is recorded as the sibling screen it is, not as a second house style.",
+    "keyCharacteristics": [
+      "Charcoal panel ground with a deeper host column; no white surfaces anywhere.",
+      "Keys: 6px radius, 1px top highlight, offset blurred drop shadow, 1px press-down.",
+      "Tally lamps in green / amber / red with a soft glow; unlit lamps are near-black wells.",
+      "One workhorse grotesk (Schibsted Grotesk) for everything; tabular numerals for every counter.",
+      "Labels are engraved: small tracked caps with a 1px dark text-shadow, never filled chips.",
+      "State is text in the row (\"listo\", \"en cola\", \"al aire\", \"transcribiendo…\"), never a spinner."
+    ],
+    "rules": [
+      { "name": "The Lamps-Only Rule", "body": "Text is achromatic. Green, amber and red appear only in lamps, lit key faces, LED digits, 1px filets and the score fill. A colored headline or a tinted card background is out of world.", "section": "colors" },
+      { "name": "The Two Reds Rule", "body": "The lamp is {colors.tally-red}; the key face is {colors.key-red}. Never put white text on the lamp red, and never use the key red as a glow.", "section": "colors" },
+      { "name": "The Meaning Rule", "body": "Green = ready, amber = queued, red = on air, unlit = new or unclassified, 45% opacity row = spam. No color is decorative and no state borrows another state's color.", "section": "colors" },
+      { "name": "The Tabular Rule", "body": "Every number that can change (counts, queue positions, durations, clocks) is set tabular-nums. Counters that read as LEDs are green with a 6px green text-shadow; on a lit key they turn charcoal with no glow.", "section": "typography" },
+      { "name": "The 22px Ceiling Rule", "body": "The panel's largest type is the 22px on-air transcript. Emphasis is a lamp or a lit key, never bigger type.", "section": "typography" },
+      { "name": "The Hardware Shadow Rule", "body": "Shadows describe a physical cap or well (top highlight plus offset dark blur, or inset top shadow). No ambient card shadows, no floating panels.", "section": "elevation" },
+      { "name": "The Glow Is State Rule", "body": "A colored glow appears only on a lit lamp or a lit key. Nothing glows at rest.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do make every clickable thing a key (6px radius, 1px rim, top highlight, offset blurred shadow, 1px press) or a plain mute text link; nothing in between.",
+      "Do keep text achromatic ({colors.text}, {colors.text-engraved}, {colors.text-mute}) and put meaning in lamps, lit key faces and 1px filets.",
+      "Do use {colors.key-red} for a red key face and {colors.tally-red} for the lamp and its glow.",
+      "Do set every changing number in tabular-nums, green with a 6px glow when it reads as an LED.",
+      "Do print state as lowercase text in the row (\"en cola\", \"transcribiendo…\") and keep the caption slot reserved so rows do not jump.",
+      "Do limit motion to state changes at 150–400 ms with cubic-bezier(.2,.8,.2,1), and honor prefers-reduced-motion.",
+      "Do keep one red key per screen: the single on-air control.",
+      "Do write controls as the action they perform, in Rioplatense sentence case."
+    ],
+    "donts": [
+      "Don't introduce white or light surfaces; the lightest ground is {colors.panel} and the only light face is a lit key.",
+      "Don't use rounded cards, pill buttons, ambient card shadows or floating panels on the board; depth is caps and wells only.",
+      "Don't fill a label; labels are 1px filets with engraved text, and their color tones are red and amber only.",
+      "Don't put white text on {colors.tally-red} or use a serif on the panel; Instrument Serif belongs to the night screen.",
+      "Don't show spinners or progress chrome for pipeline states; the row says what is happening.",
+      "Don't let a glow appear at rest or on hover; glow means a lit lamp or a lit key.",
+      "Don't set panel type above 22px; the display size lives on /aire.",
+      "Don't mix .theme-night values into .theme-panel or vice versa; each screen wears one theme."
+    ]
+  }
+}

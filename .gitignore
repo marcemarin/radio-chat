@@ -28,3 +28,6 @@ Thumbs.db
 /storage/app/wa-qr.png
 /storage/app/demo-audios/
 /docker/data/
+/.impeccable/review/
+/.impeccable/decision-payload.json
+/.impeccable/questions/
